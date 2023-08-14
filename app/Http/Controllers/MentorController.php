@@ -29,8 +29,8 @@ class MentorController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:250',
             'surname' => 'required|string|max:250',
-            'perselNo' => 'required|numeric|min:8',
-            'email' => 'required|email|max:250|unique:users',
+            'perselNo' => 'required|numeric|digits:8',
+            'email' => 'required|email|max:250|unique:mentors',
             'role' => 'required'
         ]);
 
@@ -42,11 +42,16 @@ class MentorController extends Controller
         return view('admin.edit-mentor', ['mentor' => $mentor]);
     }
 
-    public function update(Request $request, $id)
+    public function updateMentor(Mentor $mentor, Request $request)
     {
+        $data = $request->validate([
+            'name' => 'required',
+            'surname' => 'required',
+            'perselNo' => 'required|numeric|digits:8'
+        ]);
+        $mentor->update($data);
+        return redirect(route('admin-mentor'));
+        //->with('suceess','msg for success')
 
-    }
-
-
-
+    } 
 }

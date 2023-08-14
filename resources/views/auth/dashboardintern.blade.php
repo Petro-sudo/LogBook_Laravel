@@ -1,20 +1,31 @@
 @extends('auth.layouts')
 
 @section('content')
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div class="row justify-content-center mt-5">
-    <div>
-        <a href="{{route('back-admin')}}">BACK</a>
-        <a href="{{route('create-mentor')}}" class="btn btn-success" style="float:right;background-color: #d6c66f;">View
-            Profile</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="av-item nav-link active" href="{{route('dashboard')}}">Dashboard </a>
+            <a class="nav-item nav-link" href="{{route('internProfile')}}">Profile</a>
+            <a class="nav-item nav-link" href="{{route('internReport')}}">Report</a>
+            <a class="nav-item nav-link" href="{{route('saveReport')}}">Saved Reports</a>
+        </div>
     </div>
-    <br>
+</nav>
+<div class="row justify-content-center mt-5">
     <div class="card">
         <div class="card-header" style="text-align: center;">Hi Intern {{Auth::user()->name}}
             {{Auth::user()->surname}} </div>
         <div class="card-body">
+            <p style="font-weight: bold;font-size: large;text-align: center;">**Read the Instruction Carefully Before
+                Filling in Your
+                MONTHLY Duties**</p>
             <p style="font-weight: bold;font-size: large;">-On this page you need to fill in all your
-                monthky tasks as followers:
+                monthky tasks as followers:</p>
             <p style="font-weight: bold;font-size: large;">-Date:Monthly</p>
             <p style="font-weight: bold;font-size: large;">-Hours Worked: Monthly</p>
             <p style="font-weight: bold;font-size: large;">-On your Task Description field you need to fill
@@ -47,8 +58,8 @@
                 <div class="col-md-6">
                     <input type="text" class="form-control " id="hours" name="hours" value="{{ old('hours') }}">
                 </div><br>
-                <label for="task_description" style="font-weight: bold;">Task Description</label>
-                <textarea type="text" class="form-control" id="task_description" name="task_description"></textarea>
+                <label for="taskDescrition" style="font-weight: bold;">Task Description</label>
+                <textarea type="text" class="form-control" id="taskDescrition" name="taskDescrition"></textarea>
                 <div class="col-md-6"><br>
                     <label for="file" style="font-weight: bold;">Attach file as a proof of the activities
                         you have done</label>
@@ -56,14 +67,12 @@
                     <input type="file" name="file"><br>
                     <br>
                 </div>
-
                 <div>
                     <a href="{{route('back-admin')}}" class="btn btn-success"
                         style="background-color: #d6c66f;">Save</a>
                     <input type="submit" class="col-md-3 offset-md-5 btn btn-primary"
                         style="float:right;background-color: #f58742;" value="Submit">
                 </div>
-
             </form>
         </div>
     </div>

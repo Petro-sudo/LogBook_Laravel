@@ -10,6 +10,7 @@
             <div class="card-body">
                 <form action="{{ route('storementor')}}" method="post">
                     @csrf
+                    @method('post')
                     <div class="mb-3 row">
                         <label for="name" class="col-md-4 col-form-label text-md-end text-start">Name</label>
                         <div class="col-md-6">

@@ -15,12 +15,13 @@ class User extends Authenticatable
         'surname',
         'perselNo',
         'email',
-        'role', 
+        'role',
         'password',
     ];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     protected $casts = [
@@ -31,7 +32,7 @@ class User extends Authenticatable
     // {
     //     $this->attributes['role'] = json_encode($value);
     // }
-  
+
     /**
      * Get the categories
      *
@@ -40,6 +41,5 @@ class User extends Authenticatable
     // {
     //     return $this->attributes['role'] = json_decode($value);
     // }
-
- 
+    //delete if not working
 }

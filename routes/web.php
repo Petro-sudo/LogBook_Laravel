@@ -27,17 +27,18 @@ Route::controller(LoginRegisterController::class)->group(function () {
 Route::controller(AdminController::class)->group(function () {
     Route::get('/admin-admin', 'adminview')->name('admin-admin');
     Route::get('/admindasboard', 'adminback')->name('back-admin');
-
-
-
-
-
 });
 
 //intern
 Route::controller(InternController::class)->group(function () {
     Route::get('/admin-intern', 'internview')->name('admin-intern');
+    Route::get('/profile', 'profile')->name('internProfile');
+    Route::get('/reports', 'report')->name('internReport');
+    Route::get('/savereports', 'savereport')->name('saveReport');
+
+    //Route::get('/intern', '')->name('admin-mentor');
 });
+Route::get('save-post/{intern}', 'InternController@readLater');
 
 //mentor
 Route::controller(MentorController::class)->group(function () {
@@ -46,7 +47,8 @@ Route::controller(MentorController::class)->group(function () {
     Route::get('/create', 'getmentorpage')->name('create-mentor');
     Route::post('/storementor', 'storementor')->name('storementor');
     Route::get('/mentor/{mentor}/edit', 'edit')->name('editmentor');
-    //Route::post('/update/{mentorId}', 'update')->name('updatementor');
+    Route::put('/mentor/{mentor}/update', 'updateMentor')->name('updatementor');
+    //Route::post('/mentor/update', 'update')->name('updatementor');
 });
 
 

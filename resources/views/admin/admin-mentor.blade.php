@@ -31,7 +31,7 @@
                         <td>{{ $user->perselNo }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            <a href="{{route('editmentor',['mentor'=> $user->id])}}">Edit</a>
+                            <a href="{{route('editmentor',['mentor'=> $user])}}">Edit</a>
                         </td>
 
                     </tr>
