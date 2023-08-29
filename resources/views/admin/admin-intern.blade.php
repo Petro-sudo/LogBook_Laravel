@@ -14,6 +14,7 @@
                         <th>SURNAME</th>
                         <th>PERSEL-NUMBER</th>
                         <th>EMAIL-ADDRESS</th>
+                        <th>REPORTS</th>
                     </tr>
 
                     @foreach ($users as $user)
@@ -22,6 +23,9 @@
                         <td>{{ $user->surname }}</td>
                         <td>{{ $user->perselNo }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>
+                            <a href="">View Reports</a>
+                        </td>
                     </tr>
                     @endforeach
                 </table>

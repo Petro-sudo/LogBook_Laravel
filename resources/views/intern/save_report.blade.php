@@ -11,8 +11,10 @@
         <div class="navbar-nav">
             <a class="av-item nav-link active" href="{{route('dashboard')}}">Dashboard</a>
             <a class="nav-item nav-link" href="{{route('internProfile')}}">Profile</a>
-            <a class="nav-item nav-link" href="{{route('internReport')}}">Report</a>
+            <a class="nav-item nav-link" href="{{route('createReport')}}">Create Report </a>
             <a class="nav-item nav-link" href="{{route('saveReport')}}">Saved Reports</a>
+            <a class="nav-item nav-link" href="{{route('internReport')}}">Report</a>
+
         </div>
     </div>
 </nav>
@@ -22,7 +24,19 @@
             <p class="card-header" style="text-align: center; font-weight: bold;">{{Auth::user()->name}}'s To sumbits
                 reports</p>
             <div class="card-body" style="text-align: center;">
-                <h1>Save Report</h1>
+                <table class="table table-striped table-bordered table-hover dataTables-example">
+                    <tr>
+                        <th>Select Date To Edit</th>
+                    </tr>
+                    @foreach ($reports as $report)
+                    <tr>
+                        <td>
+                            <a href="{{route('editreport',['report'=> $report])}}">{{$report->startDate}} :
+                                {{$report->endDate}}</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>
             </div>
         </div>
     </div>

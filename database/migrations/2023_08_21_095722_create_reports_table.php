@@ -10,17 +10,16 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('interns', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->string('user_email');
+            $table->foreign('user_email')->references('email')->on('users');
             $table->date('startDate');
             $table->date('endDate');
-            $table->integer('hours');
-            $table->string('taskDescrition');
-            $table->string('file');
+            $table->integer('hours')->nullable();
+            $table->string('taskDescrition', 3000)->nullable();
+            $table->string('file')->nullable();
             $table->timestamps();
-            $table->foreign('user_id')
-                ->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('interns');
+        Schema::dropIfExists('reports');
     }
 };

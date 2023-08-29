@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Intern;
+use App\Models\Report;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,11 +36,32 @@ class InternController extends Controller
     }
     public function savereport()
     {
-        return view('intern.save_report');
+
+        $reports = Report::all();
+        //$reports = DB::select('select startDate, endDate from reports');
+        return view('intern.save_report', ['reports' => $reports]);
+    }
+    public function createreport()
+    {
+        return view('intern.createreport');
     }
 
-    public function readLater(Intern $intern)
+    public function storereport(Request $request)
     {
-        $intern->users->sync([Auth::user()->id]);
+        $data = $request->validate([
+            'startDate' => 'required',
+            'endDate' => 'required',
+            'hours' => '',
+            'taskDescrition' => 'required|string|max:3000',
+            'file' => '',
+            'user_email' => 'required|string|max:255'
+        ]);
+        
+        $newReport = Report::create($data);
+        return redirect(route('saveReport'));
+    }
+    public function edit(Report $report)
+    {
+        return view('intern.edit_report', ['report' => $report]);
     }
 }

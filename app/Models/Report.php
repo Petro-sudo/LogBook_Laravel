@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Intern extends Model
+class Report extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -14,6 +14,6 @@ class Intern extends Model
         'hours',
         'taskDescrition',
         'file',
+        'user_email',
     ];
-
 }

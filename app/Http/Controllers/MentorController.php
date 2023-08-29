@@ -31,7 +31,7 @@ class MentorController extends Controller
             'surname' => 'required|string|max:250',
             'perselNo' => 'required|numeric|digits:8',
             'email' => 'required|email|max:250|unique:mentors',
-            'role' => 'required'
+            'role' => 'required|integer'
         ]);
 
         $newMentor = Mentor::create($data);
@@ -53,5 +53,5 @@ class MentorController extends Controller
         return redirect(route('admin-mentor'));
         //->with('suceess','msg for success')
 
-    } 
+    }
 }

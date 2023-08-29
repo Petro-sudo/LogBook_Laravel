@@ -44,7 +44,7 @@ class LoginRegisterController extends Controller
             'surname' => 'required|string|max:250',
             'perselNo' => 'required|numeric|digits:8',
             'email' => 'required|email|max:250|unique:users',
-            'role' => 'required',
+            'role' => 'required|integer',
             'password' => 'required|min:8|confirmed'
 
         ]);

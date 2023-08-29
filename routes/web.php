@@ -35,20 +35,18 @@ Route::controller(InternController::class)->group(function () {
     Route::get('/profile', 'profile')->name('internProfile');
     Route::get('/reports', 'report')->name('internReport');
     Route::get('/savereports', 'savereport')->name('saveReport');
-
-    //Route::get('/intern', '')->name('admin-mentor');
+    Route::get('/createreport', 'createreport')->name('createReport');
+    Route::post('/storereport', 'storereport')->name('storereport');
+    Route::get('/editreport/{report}/edit', 'edit')->name('editreport');
 });
-Route::get('save-post/{intern}', 'InternController@readLater');
 
 //mentor
 Route::controller(MentorController::class)->group(function () {
     Route::get('/admin-mentor', 'mentorview')->name('admin-mentor');
-    // Route::get('/admin-mentor/{mentor}/edit', 'edit')->name('editmentor');
     Route::get('/create', 'getmentorpage')->name('create-mentor');
     Route::post('/storementor', 'storementor')->name('storementor');
     Route::get('/mentor/{mentor}/edit', 'edit')->name('editmentor');
     Route::put('/mentor/{mentor}/update', 'updateMentor')->name('updatementor');
-    //Route::post('/mentor/update', 'update')->name('updatementor');
 });
 
 
