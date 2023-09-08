@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+//use Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class InternController extends Controller
 {
@@ -35,15 +37,13 @@ class InternController extends Controller
     {
         return view('intern.report');
     }
-    public function savereport(Report $report)
+    
+    public function savereport(Report $reports)
     {
-        // if ($report->user_id != auth()->id()){
-        //     abort(code:403);
-        // }
-
-        $reports = Report::all();
-        //$reports = DB::select('select startDate, endDate from reports');
-        return view('intern.save_report', ['reports' => $reports]);
+         $user = Auth::user();
+        //$reports = Report::All(); get ALL DATA WITHOUT CONDITIONS
+        $reports = Report::where('user_id',$user->id)->orderBy('startDate', 'desc')->get();//GET ONE USER INFO
+        return view('intern.save_report')->with ('reports', $reports);
     }
     public function createreport()
     {
@@ -69,17 +69,9 @@ class InternController extends Controller
     }
     public function edit(Report $report)
     {
-        if ($report->user_email != auth()->id()){
+        if ($report->user_id != auth()->id()){
             abort(code:403);
         }
         return view('intern.edit_report', ['report' => $report]);
     }
 }
-
-// $validator = Validator::make($request->all(), [
-//     'email' => 'required|exists:users',
-// ]);
-
-// if ($validator->fails()) {
-//     flash('Email Does Not Exists')->error();
-// }

@@ -13,6 +13,7 @@
             <a class="nav-item nav-link" href="{{route('createReport')}}">Create Report </a>
             <a class="nav-item nav-link" href="{{route('saveReport')}}">Saved Reports</a>
             <a class="nav-item nav-link" href="{{route('internReport')}}">Report</a>
+
         </div>
     </div>
 </nav>
@@ -29,7 +30,8 @@
 
                 <label for="user_email" style="font-weight: bold;">Enter your user Email</label>
                 <div class="col-md-6">
-                    <select name="user_id" id="user_id">
+                    <select name="user_id" id="user_id" class="form-control">
+                        <option value="" selected disabled>Select Your Name And Surname</option>
                         @foreach ($users as $user)
                         <option value="{{ $user->id }}">{{ $user->name }} {{ $user->surname }}</option>
                         @endforeach
