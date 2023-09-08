@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\User;
 class Report extends Model
 {
     use HasFactory;
@@ -14,6 +14,10 @@ class Report extends Model
         'hours',
         'taskDescrition',
         'file',
-        'user_email',
+        'user_id',
     ];
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

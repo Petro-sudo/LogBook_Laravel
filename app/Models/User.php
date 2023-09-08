@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Models\Report;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -28,18 +28,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // public function setRoleAttribute($value)
-    // {
-    //     $this->attributes['role'] = json_encode($value);
-    // }
+   public function reports(){
+    return $this->hasMany(Report::class, 'user_id', 'id');
 
-    /**
-     * Get the categories
-     *
-     */
-    // public function getRoleAttribute($value)
-    // {
-    //     return $this->attributes['role'] = json_decode($value);
-    // }
-    //delete if not working
+}
+  
+
 }

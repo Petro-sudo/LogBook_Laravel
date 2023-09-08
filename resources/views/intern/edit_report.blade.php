@@ -51,7 +51,7 @@
                     <label for=" endDate" style="font-weight: bold;">End Date</label>
                     <div class="col-md-6">
                         <input type="date" class="form-control @error('endDate') is-invalid @enderror" id="endDate"
-                            name="endDate" value="{{ old('endDate') }}">
+                            name="endDate" value="{{$report->endDate}}">
                         @if ($errors->has('endDate'))
                         <span class="text-danger">{{ $errors->first('endDate') }}</span>
                         @endif
@@ -59,13 +59,14 @@
                     <label for="hours" style="font-weight: bold;">Enter Monthly Hours</label>
                     <div class="col-md-6">
                         <input type="text" class="form-control @error('hours') is-invalid @enderror" id="hours"
-                            name="hours" value="{{ old('hours') }}">
+                            name="hours" value="{{$report->hours}}">
                         @if ($errors->has('hours'))
                         <span class="text-danger">{{ $errors->first('hours') }}</span>
                         @endif
                     </div><br>
                     <label for="taskDescrition" style="font-weight: bold;">Task Description</label>
-                    <textarea type="text" class="form-control" id="taskDescrition" name="taskDescrition"></textarea>
+                    <textarea type="text" class="form-control" id="taskDescrition" name="taskDescrition"
+                        value="{{$report->taskDescrition}}">></textarea>
                     <div class="col-md-6"><br>
                         <label for="file" style="font-weight: bold;">Attach file as a proof of the activities
                             you have done</label>

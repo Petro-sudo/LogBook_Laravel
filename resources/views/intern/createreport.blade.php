@@ -29,10 +29,13 @@
 
                 <label for="user_email" style="font-weight: bold;">Enter your user Email</label>
                 <div class="col-md-6">
-                    <input type="text" class="form-control @error('user_email') is-invalid @enderror" id="user_email"
-                        name="user_email" value="{{ old('user_email') }}">
-                    @if ($errors->has('user_email'))
-                    <span class="text-danger">{{ $errors->first('user_email') }}</span>
+                    <select name="user_id" id="user_id">
+                        @foreach ($users as $user)
+                        <option value="{{ $user->id }}">{{ $user->name }} {{ $user->surname }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('user_id'))
+                    <span class="text-danger">{{ $errors->first('user_id') }}</span>
                     @endif
                 </div>
                 <br>

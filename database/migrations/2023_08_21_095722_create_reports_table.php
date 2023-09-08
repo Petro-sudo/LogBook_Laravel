@@ -12,8 +12,9 @@ return new class extends Migration {
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('user_email');
-            $table->foreign('user_email')->references('email')->on('users');
+//$table->string('user_email');
+            $table->unsignedBigInteger('user_id');
+          //  $table->foreign('user_email')->references('email')->on('users');
             $table->date('startDate');
             $table->date('endDate');
             $table->integer('hours')->nullable();

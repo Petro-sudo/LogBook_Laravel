@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginRegisterController extends Controller
 {
@@ -58,7 +59,8 @@ class LoginRegisterController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        return redirect()->route('login')->withSuccess('You have successfully registered, you can now login logged in!');
+        Alert::success('Congrates', 'You have successfully registered, you can now login logged in!');
+        return redirect()->route('login');
     }
 
     //view login form

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mentor;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MentorController extends Controller
 {
@@ -35,6 +37,7 @@ class MentorController extends Controller
         ]);
 
         $newMentor = Mentor::create($data);
+        Alert::success('Congrates', 'You have  Created a Mentror');
         return redirect(route('admin-mentor'));
     }
     public function edit(Mentor $mentor)
@@ -50,6 +53,7 @@ class MentorController extends Controller
             'perselNo' => 'required|numeric|digits:8'
         ]);
         $mentor->update($data);
+        Alert::success('Successful', 'You have Updated a Mentor');
         return redirect(route('admin-mentor'));
         //->with('suceess','msg for success')
 

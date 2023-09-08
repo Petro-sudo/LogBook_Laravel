@@ -8,6 +8,7 @@
         <a href="{{route('create-mentor')}}" class="btn btn-success" style="float:right;background-color: #d6c66f;">Add
             New Mentor</a>
     </div>
+    @include('sweetalert::alert')
     <br>
     <div class="row justify-content-center">
         <div class="card">
