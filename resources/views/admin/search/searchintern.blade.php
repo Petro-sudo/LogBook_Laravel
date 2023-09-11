@@ -23,7 +23,13 @@
                         <th>PERSEL-NUMBER</th>
                         <th>EMAIL-ADDRESS</th>
                     </tr>
-
+                    <div>
+                        @if(session()->has('notfound'))
+                        <label>
+                            {{session('notfound')}}
+                        </label>
+                        @endif
+                    </div>
                     @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->name }}</td>

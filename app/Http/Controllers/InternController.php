@@ -74,4 +74,17 @@ class InternController extends Controller
         }
         return view('intern.edit_report', ['report' => $report]);
     }
+    public function search(User $user)
+    {
+       
+            $search_row = $_GET['search'];
+            $users = User::where('role', 1)->where('surname', 'LIKE', '%' . $search_row . '%')
+                ->orWhere('name', 'LIKE', '%' . $search_row . '%')
+                ->orWhere('perselNo', 'LIKE', '%' . $search_row . '%')
+                ->orWhere('year', 'LIKE', '%' . $search_row . '%')
+                ->get();
+            return view('admin.search.searchintern', compact('users'));
+        
+    }
+
 }

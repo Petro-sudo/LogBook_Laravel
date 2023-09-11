@@ -46,7 +46,8 @@ class LoginRegisterController extends Controller
             'perselNo' => 'required|numeric|digits:8',
             'email' => 'required|email|max:250|unique:users',
             'role' => 'required|integer',
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|min:8|confirmed',
+            'year'=>'required'
 
         ]);
 
@@ -56,6 +57,7 @@ class LoginRegisterController extends Controller
             'perselNo' => $request->perselNo,
             'email' => $request->email,
             'role' => $request->role,
+            'year' => $request->year,
             'password' => Hash::make($request->password)
         ]);
 

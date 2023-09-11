@@ -44,14 +44,12 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="role" class="col-md-4 col-form-label text-md-end text-start">Select Role</label>
+                        <label for="year" class="col-md-4 col-form-label text-md-end text-start">Year</label>
                         <div class="col-md-6">
-                            <select name="role" id="role" class="form-control @error('role') is-invalid @enderror">
-                                <option>Select Your Role</option>
-                                <option value=3>Mentor</option>
-                            </select>
-                            @if ($errors->has('role'))
-                            <span class="text-danger">{{ $errors->first('role')}}</span>
+                            <input type="text" class="form-control @error('year') is-invalid @enderror" id="year"
+                                name="year" value="{{ old('year') }}">
+                            @if ($errors->has('year'))
+                            <span class="text-danger">{{ $errors->first('year') }}</span>
                             @endif
                         </div>
                     </div>

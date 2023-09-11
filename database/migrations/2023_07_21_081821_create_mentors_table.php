@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('surname');
             $table->integer('perselNo')->unique();
             $table->string('email')->unique();
-            $table->integer('role');
+            $table->string('year');
             $table->timestamps();
         });
     }

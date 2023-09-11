@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InternController;
 use App\Http\Controllers\MentorController;
+use App\Http\Controllers\YearsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +28,7 @@ Route::controller(LoginRegisterController::class)->group(function () {
 Route::controller(AdminController::class)->group(function () {
     Route::get('/admin-admin', 'adminview')->name('admin-admin');
     Route::get('/admindasboard', 'adminback')->name('back-admin');
+    Route::get('/2023colleague', 'colleague2023')->name('colleague-2023');
 });
 
 //intern
@@ -38,6 +40,7 @@ Route::controller(InternController::class)->group(function () {
     Route::get('/createreport', 'createreport')->name('createReport');
     Route::post('/storereport', 'storereport')->name('storereport');
     Route::get('/editreport/{report}/edit', 'edit')->name('editreport');
+    Route::get('/searchintern', 'search')->name('searchintern');
 });
 
 //mentor
@@ -47,8 +50,15 @@ Route::controller(MentorController::class)->group(function () {
     Route::post('/storementor', 'storementor')->name('storementor');
     Route::get('/mentor/{mentor}/edit', 'edit')->name('editmentor');
     Route::put('/mentor/{mentor}/update', 'updateMentor')->name('updatementor');
+    Route::get('/searchmentor', 'search')->name('searchmentor');
 });
-
+//years
+Route::controller(YearsController::class)->group(function () {
+    Route::get('/admin-admin2023', 'adminview2023')->name('admin-admin2023');
+    Route::get('/admin-mentor2023', 'mentorview2023')->name('admin-mentor2023');
+    Route::get('/admin-intern2023', 'internview2023')->name('admin-intern2023');
+  
+});
 
 //Auth::routes();
 

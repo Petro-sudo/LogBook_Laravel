@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Mentor;
+use App\Models\User;
 use Closure;
 //use DB;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\Response;
 
 class AdminController extends Controller
 {
@@ -24,5 +23,11 @@ class AdminController extends Controller
         $users = DB::select('select * from users where role = 2');
         return view('admin.admin-admin', ['users' => $users]);
     }
+    public function colleague2023()
+    {
+        return view("admin.years.2023");
+    }
+
+    
 
 }

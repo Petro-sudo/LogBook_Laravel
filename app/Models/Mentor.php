@@ -14,5 +14,6 @@ class Mentor extends Model
         'perselNo',
         'email',
         'role',
+        'year'
     ];
 }

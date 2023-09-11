@@ -33,7 +33,7 @@ class MentorController extends Controller
             'surname' => 'required|string|max:250',
             'perselNo' => 'required|numeric|digits:8',
             'email' => 'required|email|max:250|unique:mentors',
-            'role' => 'required|integer'
+            'year' => 'required'
         ]);
 
         $newMentor = Mentor::create($data);
@@ -57,5 +57,29 @@ class MentorController extends Controller
         return redirect(route('admin-mentor'));
         //->with('suceess','msg for success')
 
+    }
+
+    public function search(Mentor $mentors)
+    {
+       
+            $search_row = $_GET['search'];
+            if (  $search_row != "")
+            {
+            $mentors = Mentor::where('surname', 'LIKE', '%' . $search_row . '%')
+                ->orWhere('name', 'LIKE', '%' . $search_row . '%')
+                ->orWhere('perselNo', 'LIKE', '%' . $search_row . '%')
+                ->orWhere('year', 'LIKE', '%' . $search_row . '%')
+                ->get();
+            return view('admin.search.searchmentor', compact('mentors'));
+            }    
+            else{
+                abort(code:403);
+            }
+   
+
+    
+        
+
+        
     }
 }
