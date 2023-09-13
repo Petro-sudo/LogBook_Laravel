@@ -6,7 +6,7 @@
     <div class="col-md-8">
 
         <div class="card">
-            <div class="card-header">Login</div>
+            <div class="card-header" style="text-align: center;">Login</div>
             <div class="card-body">
                 @include('sweetalert::alert')
                 <form action="{{ route('authenticate') }}" method="post">

@@ -17,10 +17,14 @@ return new class extends Migration {
             $table->integer('perselNo')->unique();
             $table->string('email')->unique();
             $table->integer('role');
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('year');
+            $table->string('internNumber')->nullable();
+            $table->string('mentorName')->nullable();
+            $table->string('mentorNumber')->nullable();
+            $table->string('internID')->nullable()->unique();;
             //$table->integer('status_id')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

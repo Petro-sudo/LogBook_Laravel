@@ -20,22 +20,38 @@
 </nav>
 <div class="row justify-content-center mt-5">
     <div class="card">
-        <p class="card-header" style="text-align: center; font-weight: bold;">{{Auth::user()->name}}'s profile</p>
+        <p class="card-header" style="text-align: center; font-weight: bold;">{{Auth::user()->name}}'s Profile</p>
+
+
+        @foreach ($user as $users)
         <div class="card-body">
             <div>
-                <a href="" class="btn btn-success" style="float:right;background-color: #d6c66f;">Edit
+                <a href="{{route('editprofile',['user'=> $users])}}" class="btn btn-success"
+                    style="float:right;background-color: #d6c66f;">Edit
                     Profile</a>
             </div>
-            <br><br>
-            <p style="font-weight: bold;font-size: large;">Name:
-                {{Auth::user()->name}}</p>
-            <p style="font-weight: bold;font-size: large;">Surname:
-                {{Auth::user()->surname}}</p>
-            <p style="font-weight: bold;font-size: large;">Persel:
-                {{Auth::user()->perselNo}}</p>
-            <p style="font-weight: bold;font-size: large;">Email:
-                {{Auth::user()->email}}</p>
+
+
+            <br>
+            <br>
+            <p style="font-size: large;">Name and Surname: {{ $users->name }} {{ $users->surname }}
+            </p>
+            <p style="font-size: large;">Email: {{ $users->email }}</p>
+            <p style="font-size: large;">Persel: {{ $users->perselNo }}</p>
+            <p style="font-size: large;">ID Number: {{ $users->internID }}</p>
+
+            <p style="font-size: large;">Contact Number:
+                {{ $users->internNumber }}</p>
+            <p class="card-header" style="text-align: center; font-weight: bold;">Mentor's Details</p>
+
+            <p style="font-weight: bold;font-size: large;">Name and Surname:
+                {{ $users->mentorName }}</p>
+            <p style="font-weight: bold;font-size: large;">Contact Number:
+                {{ $users->mentorNumber }}</p>
+
         </div>
+
+        @endforeach
     </div>
 </div>
 @endsection

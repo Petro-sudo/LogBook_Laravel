@@ -35,11 +35,14 @@ Route::controller(AdminController::class)->group(function () {
 Route::controller(InternController::class)->group(function () {
     Route::get('/admin-intern', 'internview')->name('admin-intern');
     Route::get('/profile', 'profile')->name('internProfile');
+    Route::get('/editprofile/{user}/edit', 'editprofile')->name('editprofile');
+    Route::put('/updateprofile/{user}/update', 'updateprofile')->name('updateprofile');
     Route::get('/reports', 'report')->name('internReport');
     Route::get('/savereports', 'savereport')->name('saveReport');
     Route::get('/createreport', 'createreport')->name('createReport');
     Route::post('/storereport', 'storereport')->name('storereport');
     Route::get('/editreport/{report}/edit', 'edit')->name('editreport');
+    Route::put('/report/{report}/update', 'updateReport')->name('updatereports');
     Route::get('/searchintern', 'search')->name('searchintern');
 });
 

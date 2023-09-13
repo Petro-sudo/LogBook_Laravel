@@ -26,8 +26,9 @@ class InternController extends Controller
 
     public function profile()
     {
-        return view('intern.view-profile');
-        //return view('admin.edit-mentor');
+        $users = Auth::user();
+        $user = User::where('id',$users->id)->get();//GET ONE USER INFO
+        return view('intern.view-profile')->with('user',$user);
     }
     public function dashboard()
     {
@@ -55,6 +56,7 @@ class InternController extends Controller
     {
        
         $data = $request->validate([
+            
             'startDate' => 'required',
             'endDate' => 'required',
             'hours' => '',
@@ -74,17 +76,89 @@ class InternController extends Controller
         }
         return view('intern.edit_report', ['report' => $report]);
     }
-    public function search(User $user)
+    
+    public function updateReport(Report $report, Request $request)
     {
+        $data = $request->validate([
+            'startDate' => '',
+            'endDate' => '',
+            'hours' => '',
+            'taskDescrition' => 'max:3000',
+            'file' => ''
+
+        ]);
+        $report->update($data);
+        Alert::success('Success', 'You have Updated your Report');
+        return redirect(route('saveReport'));
+        //->with('suceess','msg for success')
+
+    }
+    public function search(User $user)
+    { 
        
             $search_row = $_GET['search'];
-            $users = User::where('role', 1)->where('surname', 'LIKE', '%' . $search_row . '%')
+            if (empty($search_row)){
+                Alert::warning('Error', 'Intern not found');
+                $users = DB::select('select * from users where role = 1');
+                return view('admin.admin-intern', ['users' => $users]);
+            }
+            else{ 
+            $users = User::where('surname', 'LIKE', '%' . $search_row . '%')
                 ->orWhere('name', 'LIKE', '%' . $search_row . '%')
                 ->orWhere('perselNo', 'LIKE', '%' . $search_row . '%')
                 ->orWhere('year', 'LIKE', '%' . $search_row . '%')
                 ->get();
             return view('admin.search.searchintern', compact('users'));
+            }
+    }
+    public function editprofile($user)
+    {
+       // return view('intern.edit-intern', ['users' => $users]);
+        return view('intern.edit-intern', ['user' => User::findOrFail($user)]);
+    }
+    public function updateprofile(User $user, Request $request)
+    {
+        $data = $request->validate([
         
+            'name' => 'required|string|max:250',
+            'surname' => 'required|string|max:250',
+            'perselNo' => 'required|numeric|digits:8',
+            'internNumber'=>'numeric|digits:10',
+            'mentorName'=>'',
+            'mentorNumber'=>'numeric|digits:10',
+            'internID'=>'numeric|digits:13'
+        ]);
+        $user->update($data);
+        Alert::success('Success', 'You have Successfully Updated your Profile');
+        return redirect(route('internProfile'));
+        //->with('suceess','msg for success')
+
     }
 
 }
+
+// 'internNumber',
+//         'mentorName',
+//         'mentorNumber',
+//         'internID'
+
+// public function search(Request $request) { $this->validateSearchRequest($request);
+//         if (Auth::user()->isSuperAdmin()) {
+    
+//             return User::where('fname', 'like', '%' . $request->search_keywords . '%')
+//                 ->orWhere('lname', 'like', '%' . $request->search_keywords . '%')
+//                 ->orderBy('fname')
+//                 ->limit($this->defaultLimitTo)
+//                 ->get();
+    
+//         } else {
+    
+//             return User::where('admin_id', Auth::id())
+//                 ->orWhere('fname', 'like', '%' . $request->search_keywords . '%')
+//                 ->orWhere('lname', 'like', '%' . $request->search_keywords . '%')
+//                 ->orderBy('fname')
+//                 ->limit($this->defaultLimitTo)
+//                 ->get();
+    
+//         }
+//     }

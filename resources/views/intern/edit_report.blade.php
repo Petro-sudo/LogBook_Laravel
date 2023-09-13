@@ -36,8 +36,7 @@
                     you
                     Understood the Instuctions or go Back to Dashboard Tab**</p>
 
-                <form action="" method="post">
-
+                <form method="post" action="{{route('updatereports', ['report'=>$report])}}">
                     @csrf
                     @method('put')
                     <label for="startDate" style="font-weight: bold;">Start Date</label>
@@ -65,8 +64,11 @@
                         @endif
                     </div><br>
                     <label for="taskDescrition" style="font-weight: bold;">Task Description</label>
-                    <textarea type="text" class="form-control" id="taskDescrition" name="taskDescrition"
-                        value="{{$report->taskDescrition}}">></textarea>
+                    <textarea type="text" class="form-control @error('taskDescrition') is-invalid @enderror"
+                        id="taskDescrition" name="taskDescrition">{{$report->taskDescrition}}</textarea>
+                    @if ($errors->has('taskDescrition'))
+                    <span class="text-danger">{{ $errors->first('taskDescrition') }}</span>
+                    @endif
                     <div class="col-md-6"><br>
                         <label for="file" style="font-weight: bold;">Attach file as a proof of the activities
                             you have done</label>
@@ -75,10 +77,10 @@
                         <br>
                     </div>
                     <div>
-                        <!-- <a href="{{route('back-admin')}}" class="btn btn-success"
-                        style="background-color: #d6c66f;">Save</a> -->
+                        <input type="submit" class=" btn btn-success" style="background-color: #d6c66f;" value="Update">
+
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary"
-                            style="float:right;background-color: #f58742;" value="Save">
+                            style="float:right;background-color: #f58742;" value="Submit">
                     </div>
                 </form>
             </div>

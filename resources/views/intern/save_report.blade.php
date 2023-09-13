@@ -24,6 +24,7 @@
         <div class="card">
             <p class="card-header" style="text-align: center; font-weight: bold;">{{Auth::user()->name}}'s To sumbits
                 reports</p>
+            @include('sweetalert::alert')
             <div class="card-body" style="text-align: center;">
                 <table class="table table-striped table-bordered table-hover dataTables-example">
                     <tr>

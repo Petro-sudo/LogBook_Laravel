@@ -6,7 +6,7 @@
     <div class="col-md-8">
 
         <div class="card">
-            <div class="card-header">Register</div>
+            <div class="card-header" style="text-align: center;">Register</div>
             <div class="card-body">
                 <form action="{{ route('store') }}" method="post">
                     @csrf
