@@ -95,7 +95,7 @@
                 <br><br>
                 <div class="mb-3 row">
                     <label for="mentorName" class="col-md-4 col-form-label text-md-start text-start">
-                        Name & Surnamer</label>
+                        Name & Surname</label>
                     <div class="col-md-4">
                         <input type="text" class="form-control " id="mentorName" name="mentorName"
                             value="{{ $user->mentorName }}">

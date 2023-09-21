@@ -35,10 +35,10 @@
                     @foreach($mentors as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->surname }}</td>
-                        <td>{{ $user->perselNo }}</td>
-                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->fname }}</td>
+                        <td>{{ $user->lname }}</td>
+                        <td>{{ $user->perselN }}</td>
+                        <td>{{ $user->emailMentor }}</td>
                         <td>
                             <a href="{{route('editmentor',['mentor'=> $user])}}">Edit</a>
                         </td>

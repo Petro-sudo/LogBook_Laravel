@@ -13,33 +13,33 @@
                     @csrf
                     @method('post')
                     <div class="mb-3 row">
-                        <label for="name" class="col-md-4 col-form-label text-md-end text-start">Name</label>
+                        <label for="fname" class="col-md-4 col-form-label text-md-end text-start">Name</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                                name="name" value="{{ old('name') }}">
-                            @if ($errors->has('name'))
-                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                            <input type="text" class="form-control @error('fname') is-invalid @enderror" id="fname"
+                                name="fname" value="{{ old('fname') }}">
+                            @if ($errors->has('fname'))
+                            <span class="text-danger">{{ $errors->first('fname') }}</span>
                             @endif
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="surname" class="col-md-4 col-form-label text-md-end text-start">Surname</label>
+                        <label for="lname" class="col-md-4 col-form-label text-md-end text-start">Surname</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control @error('surname') is-invalid @enderror" id="surname"
-                                name="surname" value="{{ old('surname') }}">
-                            @if ($errors->has('surname'))
-                            <span class="text-danger">{{ $errors->first('surname') }}</span>
+                            <input type="text" class="form-control @error('lname') is-invalid @enderror" id="lname"
+                                name="lname" value="{{ old('lname') }}">
+                            @if ($errors->has('lname'))
+                            <span class="text-danger">{{ $errors->first('lname') }}</span>
                             @endif
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="perselNo" class="col-md-4 col-form-label text-md-end text-start">Persel
+                        <label for="perselN" class="col-md-4 col-form-label text-md-end text-start">Persel
                             Number</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control @error('perselNo') is-invalid @enderror"
-                                id="perselNo" name="perselNo" value="{{ old('perselNo') }}">
-                            @if ($errors->has('perselNo'))
-                            <span class="text-danger">{{ $errors->first('perselNo') }}</span>
+                            <input type="text" class="form-control @error('perselN') is-invalid @enderror" id="perselN"
+                                name="perselN" value="{{ old('perselN') }}">
+                            @if ($errors->has('perselN'))
+                            <span class="text-danger">{{ $errors->first('perselN') }}</span>
                             @endif
                         </div>
                     </div>
@@ -54,12 +54,13 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email Address</label>
+                        <label for="emailMentor" class="col-md-4 col-form-label text-md-end text-start">Email
+                            Address</label>
                         <div class="col-md-6">
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                                name="email" value="{{ old('email') }}">
-                            @if ($errors->has('email'))
-                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                            <input type="email" class="form-control @error('emailMentor') is-invalid @enderror"
+                                id="emailMentor" name="emailMentor" value="{{ old('emailMentor') }}">
+                            @if ($errors->has('emailMentor'))
+                            <span class="text-danger">{{ $errors->first('emailMentor') }}</span>
                             @endif
                         </div>
                     </div>

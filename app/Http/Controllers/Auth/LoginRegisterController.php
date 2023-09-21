@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
-
+use App\Models\Mentor;
 class LoginRegisterController extends Controller
 {
     /**
@@ -29,7 +29,8 @@ class LoginRegisterController extends Controller
      */
     public function register()
     {
-        return view('auth.register');
+        $mentors = Mentor::all();
+        return view('auth.register')->with('mentors',$mentors);;
     }
 
     /**
@@ -47,7 +48,8 @@ class LoginRegisterController extends Controller
             'email' => 'required|email|max:250|unique:users',
             'role' => 'required|integer',
             'password' => 'required|min:8|confirmed',
-            'year'=>'required'
+            'year'=>'required',
+            'mentor_id'=>'required'
 
         ]);
 
@@ -58,6 +60,7 @@ class LoginRegisterController extends Controller
             'email' => $request->email,
             'role' => $request->role,
             'year' => $request->year,
+            'mentor_id'=>$request->mentor_id,
             'password' => Hash::make($request->password)
         ]);
 

@@ -26,6 +26,14 @@ class InternController extends Controller
 
     public function profile()
     {
+        
+        //$user = User::join('mentors','reports.id', '=', 'users.mentor_id')->where('reports.user_id','=',$users->id)->get();
+      
+
+        //$users = Auth::user();
+        // $user = User::join('mentors','mentors.id', '=', 'users.mentor_id')->where('mentors.id','=',$users->mentor_id)->get();
+        // return view('intern.view-profile')->with('user',$user);
+
         $users = Auth::user();
         $user = User::where('id',$users->id)->get();//GET ONE USER INFO
         return view('intern.view-profile')->with('user',$user);
@@ -74,7 +82,7 @@ class InternController extends Controller
         if ($report->user_id != auth()->id()){
             abort(code:403);
         }
-        return view('intern.edit_report', ['report' => $report]);
+        return view('intern.edit_report', ['report' => $report ]);
     }
     
     public function updateReport(Report $report, Request $request)
@@ -113,7 +121,10 @@ class InternController extends Controller
     }
     public function editprofile($user)
     {
-       // return view('intern.edit-intern', ['users' => $users]);
+     
+        if ($user != auth()->id()){
+            abort(code:403);
+        }
         return view('intern.edit-intern', ['user' => User::findOrFail($user)]);
     }
     public function updateprofile(User $user, Request $request)
@@ -124,7 +135,7 @@ class InternController extends Controller
             'surname' => 'required|string|max:250',
             'perselNo' => 'required|numeric|digits:8',
             'internNumber'=>'numeric|digits:10',
-            'mentorName'=>'',
+            'user_id' => 'required',
             'mentorNumber'=>'numeric|digits:10',
             'internID'=>'numeric|digits:13'
         ]);
@@ -134,31 +145,19 @@ class InternController extends Controller
         //->with('suceess','msg for success')
 
     }
+  
+    public function submit(Report $reports)
+    {
+         $user = Auth::user();
+        $reports = Report::where('user_id',$user->id)->orderBy('startDate', 'desc')->get();//GET ONE USER INFO
+        return view('intern.submit-report')->with('reports', $reports);
+    }
 
+    public function submitReport()
+    { 
+        $users = Auth::user();
+        $user = User::join('reports','reports.user_id', '=', 'users.id')->where('reports.user_id','=',$users->id)->get();
+        // $user = User::where('id',$users->id)->get();//GET ONE USER INFO
+        return view('intern.submit')->with('user',$user);
+     }  
 }
-
-// 'internNumber',
-//         'mentorName',
-//         'mentorNumber',
-//         'internID'
-
-// public function search(Request $request) { $this->validateSearchRequest($request);
-//         if (Auth::user()->isSuperAdmin()) {
-    
-//             return User::where('fname', 'like', '%' . $request->search_keywords . '%')
-//                 ->orWhere('lname', 'like', '%' . $request->search_keywords . '%')
-//                 ->orderBy('fname')
-//                 ->limit($this->defaultLimitTo)
-//                 ->get();
-    
-//         } else {
-    
-//             return User::where('admin_id', Auth::id())
-//                 ->orWhere('fname', 'like', '%' . $request->search_keywords . '%')
-//                 ->orWhere('lname', 'like', '%' . $request->search_keywords . '%')
-//                 ->orderBy('fname')
-//                 ->limit($this->defaultLimitTo)
-//                 ->get();
-    
-//         }
-//     }

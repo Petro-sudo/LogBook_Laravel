@@ -9,11 +9,16 @@ class Mentor extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'surname',
-        'perselNo',
-        'email',
+        'fname',
+        'lname',
+        'perselN',
+        'emailMentor',
         'role',
         'year'
     ];
+
+    public function users(){
+        return $this->hasMany(User::class, 'mentor_id', 'id');
+    
+    }
 }

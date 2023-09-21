@@ -27,7 +27,4 @@ class AdminController extends Controller
     {
         return view("admin.years.2023");
     }
-
-    
-
 }

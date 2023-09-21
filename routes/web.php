@@ -44,6 +44,10 @@ Route::controller(InternController::class)->group(function () {
     Route::get('/editreport/{report}/edit', 'edit')->name('editreport');
     Route::put('/report/{report}/update', 'updateReport')->name('updatereports');
     Route::get('/searchintern', 'search')->name('searchintern');
+    Route::get('/submitreport', 'submit')->name('submitreport');
+    Route::get('/submitreport/{report}/sumbit', 'submitReport')->name('reportsubmit');
+  
+    
 });
 
 //mentor

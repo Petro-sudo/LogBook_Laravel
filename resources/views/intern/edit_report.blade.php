@@ -22,8 +22,10 @@
                 <a class="av-item nav-link active" href="{{route('dashboard')}}">Dashboard </a>
                 <a class="nav-item nav-link" href="{{route('internProfile')}}">Profile</a>
                 <a class="nav-item nav-link" href="{{route('createReport')}}">Create Report </a>
-                <a class="nav-item nav-link" href="{{route('saveReport')}}">Saved Reports</a>
+                <a class="nav-item nav-link" href="{{route('saveReport')}}">Edit Reports</a>
+                <a class="nav-item nav-link" href="{{route('submitreport')}}">View and Submit Reports</a>
                 <a class="nav-item nav-link" href="{{route('internReport')}}">Report</a>
+                <a class="nav-item nav-link" href="">View Mentors Remark</a>
             </div>
         </div>
     </nav>
@@ -77,15 +79,19 @@
                         <br>
                     </div>
                     <div>
-                        <input type="submit" class=" btn btn-success" style="background-color: #d6c66f;" value="Update">
-
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary"
-                            style="float:right;background-color: #f58742;" value="Submit">
+                            style="float:right;background-color: #f58742;" value="Update">
                     </div>
                 </form>
+
+
+
             </div>
         </div>
     </div>
 </body>
 
 </html>
+<div>
+
+</div>

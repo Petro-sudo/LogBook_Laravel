@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::create('mentors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('surname');
-            $table->integer('perselNo')->unique();
-            $table->string('email')->unique();
+            $table->string('fname');
+            $table->string('lname');
+            $table->integer('perselN')->unique();
+            $table->string('emailMentor')->unique();
             $table->string('year');
             $table->timestamps();
         });

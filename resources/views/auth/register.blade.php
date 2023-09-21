@@ -52,7 +52,6 @@
                                 <span class="text-danger">{{ $errors->first('role')}}</span>
                                 @endif
                             </select>
-
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -65,6 +64,24 @@
                             @endif
                         </div>
                     </div>
+                    <br>
+                    <div class="mb-3 row">
+                        <label for="mentor_id" class="col-md-4 col-form-label text-md-end text-start">For interns
+                            Only</label>
+                        <div class="col-md-6">
+                            <select name="mentor_id" id="mentor_id" class="form-control">
+                                <option value="" selected disabled>Select Your Mentor option</option>
+                                <option value=0>Not an intern</option>
+                                @foreach ($mentors as $mentor)
+                                <option value="{{$mentor->id}}">{{$mentor->fname}} {{$mentor->lname}}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('mentor_id'))
+                            <span class="text-danger">{{ $errors->first('mentor_id') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <br>
                     <div class="mb-3 row">
                         <label for="year" class="col-md-4 col-form-label text-md-end text-start">Year</label>
                         <div class="col-md-6">
@@ -75,6 +92,7 @@
                             @endif
                         </div>
                     </div>
+                    <br>
                     <div class="mb-3 row">
                         <label for="password" class="col-md-4 col-form-label text-md-end text-start">Password</label>
                         <div class="col-md-6">

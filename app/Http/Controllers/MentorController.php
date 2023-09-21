@@ -19,20 +19,19 @@ class MentorController extends Controller
     {
         // $mentors = DB::select('select * from mentors where role = 3');
         $mentors = Mentor::all();
-        return view('admin.admin-mentor', ['mentors' => $mentors]);
+        return view('admin.admin-mentor')->with('mentors',$mentors);;
     }
     public function getmentorpage()
     {
-
         return view('admin.create-mentor');
     }
     public function storementor(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|string|max:250',
-            'surname' => 'required|string|max:250',
-            'perselNo' => 'required|numeric|digits:8',
-            'email' => 'required|email|max:250|unique:mentors',
+            'fname' => 'required|string|max:250',
+            'lname' => 'required|string|max:250',
+            'perselN' => 'required|numeric|digits:8',
+            'emailMentor' => 'required|email|max:250|unique:mentors',
             'year' => 'required'
         ]);
 
@@ -48,9 +47,9 @@ class MentorController extends Controller
     public function updateMentor(Mentor $mentor, Request $request)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'surname' => 'required',
-            'perselNo' => 'required|numeric|digits:8'
+            'fname' => 'required',
+            'lname' => 'required',
+            'perselN' => 'required|numeric|digits:8'
         ]);
         $mentor->update($data);
         Alert::success('Successful', 'You have Updated a Mentor');
@@ -65,21 +64,16 @@ class MentorController extends Controller
             $search_row = $_GET['search'];
             if (  $search_row != "")
             {
-            $mentors = Mentor::where('surname', 'LIKE', '%' . $search_row . '%')
-                ->orWhere('name', 'LIKE', '%' . $search_row . '%')
-                ->orWhere('perselNo', 'LIKE', '%' . $search_row . '%')
+            $mentors = Mentor::where('lname', 'LIKE', '%' . $search_row . '%')
+                ->orWhere('fname', 'LIKE', '%' . $search_row . '%')
+                ->orWhere('perselN', 'LIKE', '%' . $search_row . '%')
                 ->orWhere('year', 'LIKE', '%' . $search_row . '%')
                 ->get();
             return view('admin.search.searchmentor', compact('mentors'));
             }    
             else{
                 abort(code:403);
-            }
-   
-
-    
-        
-
-        
+            }    
     }
+    
 }

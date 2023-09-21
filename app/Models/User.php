@@ -11,6 +11,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
+      
         'name',
         'surname',
         'perselNo',
@@ -21,7 +22,9 @@ class User extends Authenticatable
         'internNumber',
         'mentorName',
         'mentorNumber',
-        'internID'
+        'internID',
+        'mentor_id'
+      
     ];
 
     protected $hidden = [
@@ -37,6 +40,10 @@ class User extends Authenticatable
     return $this->hasMany(Report::class, 'user_id', 'id');
 
 }
+public function mentors()
+    {
+        return $this->belongsTo(Mentor::class);
+    }
   
 
 }

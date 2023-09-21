@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('mentor_id');
             $table->string('name');
             $table->string('surname');
             $table->integer('perselNo')->unique();
@@ -20,9 +21,7 @@ return new class extends Migration {
             $table->string('password');
             $table->string('year');
             $table->string('internNumber')->nullable();
-            $table->string('mentorName')->nullable();
-            $table->string('mentorNumber')->nullable();
-            $table->string('internID')->nullable()->unique();;
+            $table->string('internID')->nullable()->unique();
             //$table->integer('status_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

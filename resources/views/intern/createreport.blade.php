@@ -11,9 +11,10 @@
             <a class="av-item nav-link active" href="{{route('dashboard')}}">Dashboard </a>
             <a class="nav-item nav-link" href="{{route('internProfile')}}">Profile</a>
             <a class="nav-item nav-link" href="{{route('createReport')}}">Create Report </a>
-            <a class="nav-item nav-link" href="{{route('saveReport')}}">Saved Reports</a>
+            <a class="nav-item nav-link" href="{{route('saveReport')}}">Edit Reports</a>
+            <a class="nav-item nav-link" href="{{route('submitreport')}}">View and Submit Reports</a>
             <a class="nav-item nav-link" href="{{route('internReport')}}">Report</a>
-
+            <a class="nav-item nav-link" href="">View Mentors Remark</a>
         </div>
     </div>
 </nav>
@@ -27,8 +28,7 @@
             <form action="{{ route('storereport')}}" method="post">
                 @csrf
                 @method('post')
-
-                <label for="user_email" style="font-weight: bold;">Enter your user Email</label>
+                <label for="user_email" style="font-weight: bold;">Select your Name user Surname</label>
                 <div class="col-md-6">
                     <select name="user_id" id="user_id" class="form-control">
                         <option value="" selected disabled>Select Your Name And Surname</option>

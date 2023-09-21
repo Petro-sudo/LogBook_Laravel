@@ -23,42 +23,42 @@
                         @csrf
                         @method('put')
                         <div class="mb-3 row">
-                            <label for="name" class="col-md-4 col-form-label text-md-end text-start">Name</label>
+                            <label for="fname" class="col-md-4 col-form-label text-md-end text-start">Name</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                                    name="name" value="{{$mentor->name}}">
-                                @if ($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                                <input type="text" class="form-control @error('fname') is-invalid @enderror" id="fname"
+                                    name="fname" value="{{$mentor->fname}}">
+                                @if ($errors->has('fname'))
+                                <span class="text-danger">{{ $errors->first('fname') }}</span>
                                 @endif
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-end text-start">Surname</label>
+                            <label for="lname" class="col-md-4 col-form-label text-md-end text-start">Surname</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control @error('surname') is-invalid @enderror"
-                                    id="surname" name="surname" value="{{$mentor->surname}}">
-                                @if ($errors->has('surname'))
-                                <span class="text-danger">{{ $errors->first('surname') }}</span>
+                                <input type="text" class="form-control @error('lname') is-invalid @enderror" id="lname"
+                                    name="lname" value="{{$mentor->lname}}">
+                                @if ($errors->has('lname'))
+                                <span class="text-danger">{{ $errors->first('lname') }}</span>
                                 @endif
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="perselNo" class="col-md-4 col-form-label text-md-end text-start">Persel
+                            <label for="perselN" class="col-md-4 col-form-label text-md-end text-start">Persel
                                 Number</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control @error('perselNo') is-invalid @enderror"
-                                    id="perselNo" name="perselNo" value="{{ $mentor->perselNo }}">
-                                @if ($errors->has('perselNo'))
-                                <span class="text-danger">{{ $errors->first('perselNo') }}</span>
+                                <input type="text" class="form-control @error('perselN') is-invalid @enderror"
+                                    id="perselN" name="perselN" value="{{ $mentor->perselN }}">
+                                @if ($errors->has('perselN'))
+                                <span class="text-danger">{{ $errors->first('perselN') }}</span>
                                 @endif
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email
+                            <label for="emailMentor" class="col-md-4 col-form-label text-md-end text-start">Email
                                 Address</label>
                             <div class="col-md-6">
-                                <label for="email" class="col-md-4 col-form-label text-md-end text-start">
-                                    {{ $mentor->email}}</label>
+                                <label for="emailMentor" class="col-md-4 col-form-label text-md-end text-start">
+                                    {{ $mentor->emailMentor}}</label>
                             </div>
                         </div>
                         <div class="mb-3 row">
