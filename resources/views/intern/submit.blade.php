@@ -40,22 +40,6 @@
                 <div class="card-body">
                     @csrf
                     @method('post')
-                    <!--                     
-                <label for="user_email" style="font-weight: bold;">Enter your user Email</label>
-                <div class="col-md-6">
-                    <select name="user_id" id="user_id" class="form-control">
-                        <option value="" selected disabled>Select Your Name And Surname</option>
-                        @foreach ($users as $user)
-                        <option value="{{ $user->id }}">{{ $user->name }} {{ $user->surname }}</option>
-                        @endforeach
-                    </select>
-                    @if ($errors->has('user_id'))
-                    <span class="text-danger">{{ $errors->first('user_id') }}</span>
-                    @endif
-                </div> -->
-
-
-
                     <br>
                     <p style="font-size: large;">Name and Surname: {{ $users->name }} {{ $users->surname }}
                     </p>
