@@ -53,11 +53,11 @@ Route::controller(InternController::class)->group(function () {
 //mentor
 Route::controller(MentorController::class)->group(function () {
     Route::get('/admin-mentor', 'mentorview')->name('admin-mentor');
-    Route::get('/create', 'getmentorpage')->name('create-mentor');
-    Route::post('/storementor', 'storementor')->name('storementor');
-    Route::get('/mentor/{mentor}/edit', 'edit')->name('editmentor');
-    Route::put('/mentor/{mentor}/update', 'updateMentor')->name('updatementor');
-    Route::get('/searchmentor', 'search')->name('searchmentor');
+    //Route::get('/create', 'getmentorpage')->name('create-mentor');
+   // Route::post('/storementor', 'storementor')->name('storementor');
+    //Route::get('/mentor/{mentor}/edit', 'edit')->name('editmentor');
+   // Route::put('/mentor/{mentor}/update', 'updateMentor')->name('updatementor');
+    //Route::get('/searchmentor', 'search')->name('searchmentor');
 });
 //years
 Route::controller(YearsController::class)->group(function () {

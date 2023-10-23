@@ -18,8 +18,10 @@ class MentorController extends Controller
     public function mentorview()
     {
         // $mentors = DB::select('select * from mentors where role = 3');
-        $mentors = Mentor::all();
-        return view('admin.admin-mentor')->with('mentors',$mentors);;
+        //$mentors = Mentor::all();
+        //return view('admin.admin-mentor')->with('mentors',$mentors);
+        $users = DB::select('select * from users where role = 3');
+        return view('admin.admin-mentor', ['mentors' => $users]);
     }
     public function getmentorpage()
     {

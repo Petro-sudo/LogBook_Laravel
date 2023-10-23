@@ -49,7 +49,6 @@ class LoginRegisterController extends Controller
             'role' => 'required|integer',
             'password' => 'required|min:8|confirmed',
             'year'=>'required',
-            'mentor_id'=>'required'
 
         ]);
 
@@ -60,7 +59,6 @@ class LoginRegisterController extends Controller
             'email' => $request->email,
             'role' => $request->role,
             'year' => $request->year,
-            'mentor_id'=>$request->mentor_id,
             'password' => Hash::make($request->password)
         ]);
 
@@ -104,7 +102,10 @@ class LoginRegisterController extends Controller
         }
         if (Auth::check() && $role == '2') {
             return view('auth.dashboardadmin');
-        } else {
+        } 
+        if (Auth::check() && $role == '3') {
+            return view('auth.dashboardmentor');
+        }else {
             return redirect()->route('login')->withErrors(['email' => 'Please login to access the dashboard.',])->onlyInput('email');
         }
     }
