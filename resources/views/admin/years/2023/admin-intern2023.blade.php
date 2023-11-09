@@ -18,6 +18,7 @@
 </nav>
 <div class="container">
     <div class="row justify-content-center">
+    <div class="col-md-9">
         <div class="card">
             <p class="card-header" style="text-align: center; font-weight: bold;">2023 INTERNS </p>
             <div class="card-body" style="text-align: center;">
@@ -44,6 +45,7 @@
                 </table>
             </div>
         </div>
+</div>
     </div>
 </div>
 @endsection

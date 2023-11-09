@@ -19,21 +19,36 @@
     </div>
 </nav>
 <div class="row justify-content-center mt-5">
+<div class="col-md-6">
     <div class="card">
         <div class="card-header" style="text-align: center;">Hi Intern {{Auth::user()->name}}
             {{Auth::user()->surname}} </div>
         <div class="card-body">
+
             <p style="font-weight: bold;font-size: large;text-align: center;">**Before Filling in the Form make sure you
                 Understood the Instuctions or go Back to Dashboard Tab**</p>
             <form action="{{ route('storereport')}}" method="post">
                 @csrf
                 @method('post')
-                <label for="user_email" style="font-weight: bold;">Select your Name user Surname</label>
+                <label for="user_id" style="font-weight: bold;">Select your Name user Surname</label>
                 <div class="col-md-6">
                     <select name="user_id" id="user_id" class="form-control">
                         <option value="" selected disabled>Select Your Name And Surname</option>
                         @foreach ($users as $user)
                         <option value="{{ $user->id }}">{{ $user->name }} {{ $user->surname }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('user_id'))
+                    <span class="text-danger">{{ $errors->first('user_id') }}</span>
+                    @endif
+                </div>
+                <br>
+                <label for="mentor_id" style="font-weight: bold;">Select your Mentor</label>
+                <div class="col-md-6">
+                    <select name="mentor_id" id="mentor_id" class="form-control">
+                        <option value="" selected disabled>Select Your Mentor Name</option>
+                        @foreach ($users as $mentor)
+                        <option value="{{ $user->id }}">{{ $mentor->name }} {{ $mentor->surname }}</option>
                         @endforeach
                     </select>
                     @if ($errors->has('user_id'))
@@ -72,12 +87,13 @@
                     <span class="text-danger">{{ $errors->first('taskDescrition') }}</span>
                     @endif
                 </div>
-                <div class="col-md-6"><br>
+                <!-- <div class="col-md-6"><br>
                     <label for="file" style="font-weight: bold;">Attach file as a proof of the activities
                         you have done</label>
                     <input type="text" class="form-control" id="file" name="file"></input>
                     <input type="file" name="file"><br>
                     <br>
+                </div> -->
                 </div>
                 <div>
                     <!-- <a href="{{route('back-admin')}}" class="btn btn-success"
@@ -88,6 +104,7 @@
             </form>
         </div>
     </div>
+</div>
 </div>
 
 @endsection

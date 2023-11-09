@@ -20,13 +20,11 @@ class User extends Authenticatable
         'password',
         'year',
         'internNumber',
-        'mentorName',
         'mentorNumber',
         'internID',
-        'mentor_id'
+        'mentorid'
       
     ];
-
     protected $hidden = [
         'password',
         'remember_token',
@@ -38,12 +36,15 @@ class User extends Authenticatable
 
    public function reports(){
     return $this->hasMany(Report::class, 'user_id', 'id');
+    return $this->hasMany(Report::class, 'user_id','mentorid');
+}
+
+public function mentor(){
+    return $this->hasMany(User::class, 'mentorid', 'id');
 
 }
 public function mentors()
     {
         return $this->belongsTo(Mentor::class);
     }
-  
-
 }

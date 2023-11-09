@@ -28,8 +28,6 @@ class InternController extends Controller
     {
         
         //$user = User::join('mentors','reports.id', '=', 'users.mentor_id')->where('reports.user_id','=',$users->id)->get();
-      
-
         //$users = Auth::user();
         // $user = User::join('mentors','mentors.id', '=', 'users.mentor_id')->where('mentors.id','=',$users->mentor_id)->get();
         // return view('intern.view-profile')->with('user',$user);
@@ -59,7 +57,11 @@ class InternController extends Controller
         $users = DB::select('select * from users where role = 1');
         return view('intern.createreport')->with('users',$users);
     }
-
+    public function creatementor()
+    {
+        $mentors = DB::select('select * from users where role = 3');
+        return view('intern.createreport')->with('users',$mentors);
+    }
     public function storereport(Request $request)
     {
        
@@ -70,7 +72,8 @@ class InternController extends Controller
             'hours' => '',
             'taskDescrition' => 'required|string|max:3000',
             'file' => '',
-           'user_id' => 'required'
+           'user_id' => 'required',//intern id
+           //'mentor_id' => 'required'
         ]);
         
         $newReport = Report::create($data);
@@ -127,6 +130,11 @@ class InternController extends Controller
         }
         return view('intern.edit-intern', ['user' => User::findOrFail($user)]);
     }
+    public function getmentor($user)
+    {
+        $users = DB::select('select * from users where role = 3');
+        return view('intern.edit-intern')->with('users',$user);
+    }
     public function updateprofile(User $user, Request $request)
     {
         $data = $request->validate([
@@ -135,13 +143,12 @@ class InternController extends Controller
             'surname' => 'required|string|max:250',
             'perselNo' => 'required|numeric|digits:8',
             'internNumber'=>'numeric|digits:10',
-            'user_id' => 'required',
-            'mentorNumber'=>'numeric|digits:10',
-            'internID'=>'numeric|digits:13'
+            'internID'=>'numeric|digits:13',
+            //'mentorID' => 'required'
         ]);
         $user->update($data);
         Alert::success('Success', 'You have Successfully Updated your Profile');
-        return redirect(route('internProfile'));
+        return redirect()->route('internProfile');
         //->with('suceess','msg for success')
 
     }

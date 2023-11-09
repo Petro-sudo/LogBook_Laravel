@@ -10,13 +10,11 @@
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
+        <div class="navbar-nav">
             <a class="av-item nav-link active" href="{{route('dashboard')}}">Dashboard </a>
-            <a class="nav-item nav-link" href="{{route('internProfile')}}">Profile</a>
-            <a class="nav-item nav-link" href="{{route('createReport')}}">Create Report </a>
-            <a class="nav-item nav-link" href="{{route('saveReport')}}">Edit Reports</a>
-            <a class="nav-item nav-link" href="{{route('submitreport')}}">View and Submit Reports</a>
-            <a class="nav-item nav-link" href="{{route('internReport')}}">Report</a>
-            <a class="nav-item nav-link" href="">View Mentors Remark</a>
+            <a class="nav-item nav-link" href="{{route('mentorProfile')}}">Profile</a>
+            <a class="nav-item nav-link" href="{{route('viewreport')}}">View Reports</a>
+
         </div>
     </div>
 </nav>
@@ -24,26 +22,26 @@
     <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card">
-            <p class="card-header" style="text-align: center; font-weight: bold;">{{Auth::user()->name}} View Your
+            <p class="card-header" style="text-align: center; font-weight: bold;">{{Auth::user()->name}} View
                 Reports</p>
             @include('sweetalert::alert')
             <div class="card-body" style="text-align: center;">
                 <table class="table table-striped table-bordered table-hover dataTables-example">
                     <tr>
-                        <th>Select Date To Edit</th>
+                        <th>Select Intern to View Report</th>
                     </tr>
-                    @foreach ($reports as $report)
+                    @foreach ($users as $user)
                     <tr>
                         <td>
-                            <a href="{{route('reportsubmit',['report'=> $report])}}">{{$report->startDate}} :
-                                {{$report->endDate}}</a>
+                            <a href="{{route('datereport',['user'=> $user])}}">{{$user->name}} :
+                                {{$user->surname}}</a>
                         </td>
                     </tr>
                     @endforeach
                 </table>
             </div>
         </div>
-    </div>
+</div>
     </div>
 </div>
 @endsection

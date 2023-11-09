@@ -20,19 +20,15 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="av-item nav-link active" href="{{route('dashboard')}}">Dashboard </a>
-                    <a class="nav-item nav-link" href="{{route('internProfile')}}">Profile</a>
-                    <a class="nav-item nav-link" href="{{route('createReport')}}">Create Report </a>
-                    <a class="nav-item nav-link" href="{{route('saveReport')}}">Edit Reports</a>
-                    <a class="nav-item nav-link" href="{{route('submitreport')}}">View and Submit Reports</a>
-                    <a class="nav-item nav-link" href="{{route('internReport')}}">Report</a>
-                    <a class="nav-item nav-link" href="">View Mentors Remark</a>
-                </div>
+                <div class="navbar-nav">
+                <a class="av-item nav-link active" href="{{route('dashboard')}}">Dashboard </a>
+            <a class="nav-item nav-link" href="{{route('mentorProfile')}}">Profile</a>
+            <a class="nav-item nav-link" href="{{route('viewreport')}}">View Reports</a>
+     </div>
             </div>
         </div>
     </nav>
     <div class="row justify-content-center mt-5">
-    <div class="col-md-6">
         <div class="card">
             <p class="card-header" style="text-align: center; font-weight: bold;">{{Auth::user()->name}}'s Profile</p>
 
@@ -67,7 +63,6 @@
                 @endforeach
             </form>
         </div>
-      </div>
     </div>
 </body>
 

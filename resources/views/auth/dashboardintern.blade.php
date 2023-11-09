@@ -49,7 +49,7 @@
                 form then. Locate the foem to
                 'Saved Reports Tab', Edit the form, then Submit the form to your mentor for review then to HR at end of
                 each and every Month"</p>
-            <p style="font-weight: bold;font-size: large;">Lastly Attach Monthly proof of Attandnce</p>
+            <!-- <p style="font-weight: bold;font-size: large;">Lastly Attach Monthly proof of Attandnce</p> -->
             <p style="font-weight: bold;font-size: large;"></p>
         </div>
     </div>

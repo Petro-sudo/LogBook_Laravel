@@ -20,6 +20,7 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::get('/admin', 'dashboard')->name('admin');
     Route::post('/logout', 'logout')->name('logout');
+    //Route::get('/getmentor', 'getmentor')->name('getmentor');
     //Route::post('/enter on browser', 'name on the control ')->name('routing name');
 
 });
@@ -37,9 +38,11 @@ Route::controller(InternController::class)->group(function () {
     Route::get('/profile', 'profile')->name('internProfile');
     Route::get('/editprofile/{user}/edit', 'editprofile')->name('editprofile');
     Route::put('/updateprofile/{user}/update', 'updateprofile')->name('updateprofile');
+    //Route::get('/getmentor', 'getmentor')->name('getmentor');
     Route::get('/reports', 'report')->name('internReport');
     Route::get('/savereports', 'savereport')->name('saveReport');
     Route::get('/createreport', 'createreport')->name('createReport');
+    Route::get('/createreportMentor', 'creatementor')->name('createMReport');
     Route::post('/storereport', 'storereport')->name('storereport');
     Route::get('/editreport/{report}/edit', 'edit')->name('editreport');
     Route::put('/report/{report}/update', 'updateReport')->name('updatereports');
@@ -53,11 +56,13 @@ Route::controller(InternController::class)->group(function () {
 //mentor
 Route::controller(MentorController::class)->group(function () {
     Route::get('/admin-mentor', 'mentorview')->name('admin-mentor');
-    //Route::get('/create', 'getmentorpage')->name('create-mentor');
-   // Route::post('/storementor', 'storementor')->name('storementor');
-    //Route::get('/mentor/{mentor}/edit', 'edit')->name('editmentor');
-   // Route::put('/mentor/{mentor}/update', 'updateMentor')->name('updatementor');
-    //Route::get('/searchmentor', 'search')->name('searchmentor');
+    Route::get('/mprofile', 'profile')->name('mentorProfile');
+    Route::get('/editmentorprofile/{user}/edit', 'editmentorprofile')->name('editmentorprofile');
+    Route::put('/updatementorprofile/{user}/update', 'updatementorprofile')->name('updatementorprofile');
+    Route::get('/viewreport', 'view')->name('viewreport');
+    Route::get('/viewreportdates/{user}/dates', 'date')->name('datereport');
+    Route::get('/viewreport/{user}/view', 'viewReport')->name('reportview');
+  
 });
 //years
 Route::controller(YearsController::class)->group(function () {

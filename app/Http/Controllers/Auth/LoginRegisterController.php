@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 use App\Models\Mentor;
 class LoginRegisterController extends Controller
 {
@@ -29,7 +30,7 @@ class LoginRegisterController extends Controller
      */
     public function register()
     {
-        $mentors = Mentor::all();
+        $mentors = DB::select('select * from users where role = 3');
         return view('auth.register')->with('mentors',$mentors);;
     }
 
@@ -44,11 +45,12 @@ class LoginRegisterController extends Controller
         $request->validate([
             'name' => 'required|string|max:250',
             'surname' => 'required|string|max:250',
-            'perselNo' => 'required|numeric|digits:8',
+            'perselNo' => 'required|numeric|digits:8|unique:users',
             'email' => 'required|email|max:250|unique:users',
             'role' => 'required|integer',
             'password' => 'required|min:8|confirmed',
             'year'=>'required',
+            'mentorid'=>'required'
 
         ]);
 
@@ -59,6 +61,7 @@ class LoginRegisterController extends Controller
             'email' => $request->email,
             'role' => $request->role,
             'year' => $request->year,
+            'mentorid' =>$request->mentorid,
             'password' => Hash::make($request->password)
         ]);
 

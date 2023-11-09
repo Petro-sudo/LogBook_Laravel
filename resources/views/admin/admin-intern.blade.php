@@ -3,10 +3,11 @@
 @section('content')
 
 <div class="container">
-    <a href="{{route('back-admin')}}">BACK</a>
     <div class="row justify-content-center">
+    <div class="col-md-8">
+    <a href="{{route('back-admin')}}">BACK</a>
         <form class="form-inline my-2 my-ls-0" type="get" action="{{route('searchintern')}}">
-            <div class="d-flex justify-content-left">
+            <div class="d-flex justify-content-right" style= "text-align: right">
                 <div class="input-group w-auto">
                     <input class="form-control" name="search" type="search" placeholder="Search">
                     <button class="btn btn-warning" type="submit">Search</button>
@@ -36,6 +37,7 @@
                 </table>
             </div>
         </div>
+</div>
     </div>
 </div>
 @endsection

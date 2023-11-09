@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mentor;
+use App\Models\User;
+use App\Models\Report;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 class MentorController extends Controller
 {
@@ -17,65 +19,71 @@ class MentorController extends Controller
 
     public function mentorview()
     {
-        // $mentors = DB::select('select * from mentors where role = 3');
-        //$mentors = Mentor::all();
-        //return view('admin.admin-mentor')->with('mentors',$mentors);
+      
         $users = DB::select('select * from users where role = 3');
         return view('admin.admin-mentor', ['mentors' => $users]);
     }
-    public function getmentorpage()
-    {
-        return view('admin.create-mentor');
-    }
-    public function storementor(Request $request)
-    {
-        $data = $request->validate([
-            'fname' => 'required|string|max:250',
-            'lname' => 'required|string|max:250',
-            'perselN' => 'required|numeric|digits:8',
-            'emailMentor' => 'required|email|max:250|unique:mentors',
-            'year' => 'required'
-        ]);
-
-        $newMentor = Mentor::create($data);
-        Alert::success('Congrates', 'You have  Created a Mentror');
-        return redirect(route('admin-mentor'));
-    }
-    public function edit(Mentor $mentor)
-    {
-        return view('admin.edit-mentor', ['mentor' => $mentor]);
-    }
-
-    public function updateMentor(Mentor $mentor, Request $request)
-    {
-        $data = $request->validate([
-            'fname' => 'required',
-            'lname' => 'required',
-            'perselN' => 'required|numeric|digits:8'
-        ]);
-        $mentor->update($data);
-        Alert::success('Successful', 'You have Updated a Mentor');
-        return redirect(route('admin-mentor'));
-        //->with('suceess','msg for success')
-
-    }
-
-    public function search(Mentor $mentors)
-    {
-       
-            $search_row = $_GET['search'];
-            if (  $search_row != "")
-            {
-            $mentors = Mentor::where('lname', 'LIKE', '%' . $search_row . '%')
-                ->orWhere('fname', 'LIKE', '%' . $search_row . '%')
-                ->orWhere('perselN', 'LIKE', '%' . $search_row . '%')
-                ->orWhere('year', 'LIKE', '%' . $search_row . '%')
-                ->get();
-            return view('admin.search.searchmentor', compact('mentors'));
-            }    
-            else{
-                abort(code:403);
-            }    
-    }
     
-}
+    public function profile()
+    {
+        
+        $users = Auth::user();
+        $user = User::where('id',$users->id)->get();//GET ONE USER INFO
+        return view('mentor.mentor-profile')->with('user',$user);
+    }
+    public function editmentorprofile($user)
+    {
+     
+        if ($user != auth()->id()){
+            abort(code:403);
+        }
+        return view('mentor.edit-mentor', ['user' => User::findOrFail($user)]);
+    }
+    public function updatementorprofile(User $user, Request $request)
+    {
+        $data = $request->validate([
+        
+            'name' => 'required|string|max:250',
+            'surname' => 'required|string|max:250',
+            'perselNo' => 'required|numeric|digits:8',
+            'mentorNumber'=>'numeric|digits:10',
+          
+        ]);
+        $user->update($data);
+        Alert::success('Success', 'You have Successfully Updated your Profile');
+        return redirect(route('mentorProfile'));
+      
+
+    }
+
+    public function view(User $users)
+    {
+         $user = Auth::user();
+         $users = User::where('mentorid',$user->id)->orderBy('name', 'desc')->get();
+       
+        //$users = User::where('mentorid',$user->id)->orderBy('name', 'desc')->get();//GET ONE USER INFO
+        return view('mentor.view-report')->with('users', $users);
+    }
+
+    public function date(Report $reports)
+    {
+         $user = Auth::user();
+         //$reports = DB::select('select * from reports where user_id =2');
+       $reports = Report::where('user_id',$user->mentorid )->orderBy('startDate', 'desc')->get();//GET ONE USER INFO
+       dd($reports);
+        return view('mentor.date-report')->with('reports', $reports);
+
+    }
+
+    public function viewReport()
+    { 
+        $users = Auth::user();
+        //$user = User::join('reports','reports.user_id', '=', 'users.id')->where('reports.user_id','=',$users->id)->get();
+        $user = User::join('reports','reports.user_id', '=', 'users.id')->where('mentorid',$users->id,'=','reports.user_id')->get();
+       dd($user)  ;      // $user = User::where('id',$users->id)->get();//GET ONE USER INFO
+        return view('mentor.view')->with('user',$user);
+     }  
+
+    } 
+
+  

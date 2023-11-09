@@ -3,12 +3,11 @@
 @section('content')
 
 <div class="container">
-    <div>
-        <a href="{{route('back-admin')}}">BACK</a>
-    </div>
     @include('sweetalert::alert')
     <br>
     <div class="row justify-content-center">
+    <div class="col-md-8">
+    <a href="{{route('back-admin')}}">BACK</a>
         <div class="card">
             <p class="card-header" style="text-align: center; font-weight: bold;"><?php echo date("Y"); ?> MENTORS </p>
             <div class="card-body" style="text-align: center;">
@@ -33,6 +32,7 @@
                     @endforeach
                 </table>
             </div>
+        </div>
         </div>
     </div>
 </div>

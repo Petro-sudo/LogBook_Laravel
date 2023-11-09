@@ -56,6 +56,22 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
+                        <label for="role" class="col-md-4 col-form-label text-md-end text-start">Please Select</label>
+                        <br>
+                        <div class="col-md-6">
+                            <select name="mentorid" id="mentorid" class="form-control">
+                              <option value="" selected disabled>Select Your Mentor</option>
+                                  <option value=0>Not an Intern</option>
+                                 @foreach ($mentors as $user)
+                                  <option value="{{ $user->id }}">{{ $user->name }} {{ $user->surname }}</option>
+                                 @endforeach
+                           </select>
+                              @if ($errors->has('mentorid'))
+                                  <span class="text-danger">{{ $errors->first('mentorid') }}</span>
+                             @endif
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email Address</label>
                         <div class="col-md-6">
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"

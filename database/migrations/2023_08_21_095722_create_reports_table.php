@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('mentor_id');
             $table->date('startDate');
             $table->date('endDate');
             $table->integer('hours');

@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="container">
-    <a href="{{route('back-admin')}}">BACK</a>
     <div class="row justify-content-center">
-
+    <div class="col-md-8">
+    <a href="{{route('back-admin')}}">BACK</a>
         <div class="card">
             <p class="card-header" style="text-align: center; font-weight: bold;"> ADMINS </p>
             <div class="card-body" style="text-align: center;">
@@ -28,6 +28,7 @@
                 </table>
             </div>
         </div>
+    </div>
     </div>
 </div>
 @endsection

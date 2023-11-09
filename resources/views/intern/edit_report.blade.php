@@ -11,6 +11,7 @@
 <br><br>
 
 <body>
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +19,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav"  >
                 <a class="av-item nav-link active" href="{{route('dashboard')}}">Dashboard </a>
                 <a class="nav-item nav-link" href="{{route('internProfile')}}">Profile</a>
                 <a class="nav-item nav-link" href="{{route('createReport')}}">Create Report </a>
@@ -29,7 +30,9 @@
             </div>
         </div>
     </nav>
+
     <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
         <div class="card">
             <div class="card-header" style="text-align: center;"> Edit From {{$report->startDate}} To
                 {{$report->endDate}}</div>
@@ -64,20 +67,21 @@
                         @if ($errors->has('hours'))
                         <span class="text-danger">{{ $errors->first('hours') }}</span>
                         @endif
-                    </div><br>
-                    <label for="taskDescrition" style="font-weight: bold;">Task Description</label>
-                    <textarea type="text" class="form-control @error('taskDescrition') is-invalid @enderror"
-                        id="taskDescrition" name="taskDescrition">{{$report->taskDescrition}}</textarea>
-                    @if ($errors->has('taskDescrition'))
-                    <span class="text-danger">{{ $errors->first('taskDescrition') }}</span>
-                    @endif
-                    <div class="col-md-6"><br>
+                           </div><br>
+                           <label for="taskDescrition" style="font-weight: bold;">Task Description</label>
+                            <textarea type="text" class="form-control @error('taskDescrition') is-invalid @enderror"
+                             id="taskDescrition" name="taskDescrition">{{$report->taskDescrition}}</textarea>
+                            @if ($errors->has('taskDescrition'))
+                                         <span class="text-danger">{{ $errors->first('taskDescrition') }}</span>
+                             @endif
+                     </div>
+                    <!-- <div class="col-md-6"><br>
                         <label for="file" style="font-weight: bold;">Attach file as a proof of the activities
                             you have done</label>
                         <input type="text" class="form-control" id="file" name="file"></input>
                         <input type="file" name="file"><br>
                         <br>
-                    </div>
+                    </div> -->
                     <div>
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary"
                             style="float:right;background-color: #f58742;" value="Update">
@@ -88,6 +92,7 @@
 
             </div>
         </div>
+</div>
     </div>
 </body>
 
