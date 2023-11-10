@@ -15,6 +15,7 @@ class Report extends Model
         'taskDescrition',
         'file',
         'user_id',
+        'mentor_id'
     ];
     public function users()
     {

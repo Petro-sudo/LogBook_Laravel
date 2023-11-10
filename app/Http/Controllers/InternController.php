@@ -54,14 +54,14 @@ class InternController extends Controller
     }
     public function createreport()
     {
-        $users = DB::select('select * from users where role = 1');
-        return view('intern.createreport')->with('users',$users);
+        // to make dynamic dropdown
+       // $users = DB::select('select * from users where role = 1');
+        //$data = DB::select('select * from users where role = 3');
+        $users = User::all()->where('role','=','1');
+        $data  = User::all()->where('role','=','3');
+        return view('intern.createreport', ['users'=>$users, 'data'=>$data,]);
     }
-    public function creatementor()
-    {
-        $mentors = DB::select('select * from users where role = 3');
-        return view('intern.createreport')->with('users',$mentors);
-    }
+    
     public function storereport(Request $request)
     {
        
@@ -73,7 +73,7 @@ class InternController extends Controller
             'taskDescrition' => 'required|string|max:3000',
             'file' => '',
            'user_id' => 'required',//intern id
-           //'mentor_id' => 'required'
+           'mentor_id' => 'required'
         ]);
         
         $newReport = Report::create($data);

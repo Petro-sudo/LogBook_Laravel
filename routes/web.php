@@ -42,7 +42,6 @@ Route::controller(InternController::class)->group(function () {
     Route::get('/reports', 'report')->name('internReport');
     Route::get('/savereports', 'savereport')->name('saveReport');
     Route::get('/createreport', 'createreport')->name('createReport');
-    Route::get('/createreportMentor', 'creatementor')->name('createMReport');
     Route::post('/storereport', 'storereport')->name('storereport');
     Route::get('/editreport/{report}/edit', 'edit')->name('editreport');
     Route::put('/report/{report}/update', 'updateReport')->name('updatereports');

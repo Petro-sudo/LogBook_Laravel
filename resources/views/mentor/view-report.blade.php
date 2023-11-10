@@ -33,7 +33,7 @@
                     @foreach ($users as $user)
                     <tr>
                         <td>
-                            <a href="{{route('datereport',['user'=> $user])}}">{{$user->name}} :
+                            <a href="{{route('datereport',[($user->id)])}}">{{$user->name}} :
                                 {{$user->surname}}</a>
                         </td>
                     </tr>

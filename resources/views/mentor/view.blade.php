@@ -11,26 +11,11 @@
 <br><br>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                <div class="navbar-nav">
-                <a class="av-item nav-link active" href="{{route('dashboard')}}">Dashboard </a>
-            <a class="nav-item nav-link" href="{{route('mentorProfile')}}">Profile</a>
-            <a class="nav-item nav-link" href="{{route('viewreport')}}">View Reports</a>
-     </div>
-            </div>
-        </div>
-    </nav>
     <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+    <a href="{{route('viewreport')}}">BACK</a>
         <div class="card">
-            <p class="card-header" style="text-align: center; font-weight: bold;">{{Auth::user()->name}}'s Profile</p>
+            <p class="card-header" style="text-align: center; font-weight: bold;">View Report</p>
 
             <form method="post" action="">
                 @foreach ($user as $users)
@@ -47,7 +32,7 @@
                     <p style="font-size: large;">Contact Number:
                         {{ $users->internNumber }}</p>
 
-                    <p class="card-header" style="text-align: center; font-weight: bold;">Monthly Report
+                    <p class="card-header" style="text-align: center; font-weight: bold;">From:  {{ $users->startDate }} To: {{ $users->endDate }}
                     </p>
                     <br>
                     <p style="font-size: large; font-weight: bold;border-bottom:1ch ">Start and End Date</p>
@@ -56,12 +41,11 @@
                     <p style="font-size: large;border-bottom: 1px solid;"> {{ $users->hours }} Hours</p>
                     <p style="font-size: large;font-weight: bold;">Task Describtion</p>
                     <pre style="font-size: large;border-bottom: 1px solid;">{{ $users->taskDescrition }}</pre>
-
-
                 </div>
 
                 @endforeach
             </form>
+        </div>
         </div>
     </div>
 </body>

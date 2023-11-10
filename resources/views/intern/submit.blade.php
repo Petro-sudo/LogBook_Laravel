@@ -11,28 +11,10 @@
 <br><br>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="av-item nav-link active" href="{{route('dashboard')}}">Dashboard </a>
-                    <a class="nav-item nav-link" href="{{route('internProfile')}}">Profile</a>
-                    <a class="nav-item nav-link" href="{{route('createReport')}}">Create Report </a>
-                    <a class="nav-item nav-link" href="{{route('saveReport')}}">Edit Reports</a>
-                    <a class="nav-item nav-link" href="{{route('submitreport')}}">View and Submit Reports</a>
-                    <a class="nav-item nav-link" href="{{route('internReport')}}">Report</a>
-                    <a class="nav-item nav-link" href="">View Mentors Remark</a>
-                </div>
-            </div>
-        </div>
-    </nav>
     <div class="row justify-content-center mt-5">
     <div class="col-md-6">
+    <a href="{{route('submitreport')}}">BACK</a>
+            <br>
         <div class="card">
             <p class="card-header" style="text-align: center; font-weight: bold;">{{Auth::user()->name}}'s Profile</p>
 
@@ -42,16 +24,16 @@
                     @csrf
                     @method('post')
                     <br>
-                    <p style="font-size: large;">Name and Surname: {{ $users->name }} {{ $users->surname }}
+                    <!-- <p style="font-size: large;">Name and Surname: {{ $users->name }} {{ $users->surname }}
                     </p>
                     <p style="font-size: large;">Email: {{ $users->email }}</p>
                     <p style="font-size: large;">Persel: {{ $users->perselNo }}</p>
                     <p style="font-size: large;">ID Number: {{ $users->internID }}</p>
 
                     <p style="font-size: large;">Contact Number:
-                        {{ $users->internNumber }}</p>
+                        {{ $users->internNumber }}</p> -->
 
-                    <p class="card-header" style="text-align: center; font-weight: bold;">Monthly Report
+                    <p class="card-header" style="text-align: center; font-weight: bold;">From:  {{ $users->startDate }} *** End Date  To: {{ $users->endDate }}
                     </p>
                     <br>
                     <p style="font-size: large; font-weight: bold;border-bottom:1ch ">Start and End Date</p>

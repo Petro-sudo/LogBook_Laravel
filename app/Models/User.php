@@ -36,13 +36,13 @@ class User extends Authenticatable
 
    public function reports(){
     return $this->hasMany(Report::class, 'user_id', 'id');
-    return $this->hasMany(Report::class, 'user_id','mentorid');
+     return $this->hasMany(Report::class, 'user_id','mentorid');
 }
 
-public function mentor(){
-    return $this->hasMany(User::class, 'mentorid', 'id');
+// public function mentor(){
+//     return $this->hasMany(User::class, 'mentorid', 'id');
 
-}
+// }
 public function mentors()
     {
         return $this->belongsTo(Mentor::class);

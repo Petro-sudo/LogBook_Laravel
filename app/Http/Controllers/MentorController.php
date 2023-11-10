@@ -60,8 +60,6 @@ class MentorController extends Controller
     {
          $user = Auth::user();
          $users = User::where('mentorid',$user->id)->orderBy('name', 'desc')->get();
-       
-        //$users = User::where('mentorid',$user->id)->orderBy('name', 'desc')->get();//GET ONE USER INFO
         return view('mentor.view-report')->with('users', $users);
     }
 
@@ -69,8 +67,7 @@ class MentorController extends Controller
     {
          $user = Auth::user();
          //$reports = DB::select('select * from reports where user_id =2');
-       $reports = Report::where('user_id',$user->mentorid )->orderBy('startDate', 'desc')->get();//GET ONE USER INFO
-       dd($reports);
+       $reports = Report::where('mentor_id', $user->id)->orderBy('startDate', 'desc')->get();//GET ONE USER INFO
         return view('mentor.date-report')->with('reports', $reports);
 
     }
@@ -79,8 +76,8 @@ class MentorController extends Controller
     { 
         $users = Auth::user();
         //$user = User::join('reports','reports.user_id', '=', 'users.id')->where('reports.user_id','=',$users->id)->get();
-        $user = User::join('reports','reports.user_id', '=', 'users.id')->where('mentorid',$users->id,'=','reports.user_id')->get();
-       dd($user)  ;      // $user = User::where('id',$users->id)->get();//GET ONE USER INFO
+        $user = User::join('reports','reports.user_id', '=', 'users.id')->where('reports.mentor_id','=',$users->id)->get();
+       //dd($user)  ;      // $user = User::where('id',$users->id)->get();//GET ONE USER INFO
         return view('mentor.view')->with('user',$user);
      }  
 

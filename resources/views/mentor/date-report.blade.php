@@ -1,5 +1,5 @@
-@extends('auth.layouts')
 
+@extends('auth.layouts')
 @section('content')
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -33,7 +33,7 @@
                     @foreach ($reports as $report)
                     <tr>
                         <td>
-                            <a href="{{route('reportview',['report'=> $report])}}">{{$report->startDate}} :
+                            <a href="{{route('reportview',[($report->user_id)])}}">{{$report->startDate}} :
                                 {{$report->endDate}}</a>
                         </td>
                     </tr>
@@ -42,5 +42,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>  
 @endsection

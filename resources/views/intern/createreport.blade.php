@@ -12,9 +12,7 @@
             <a class="nav-item nav-link" href="{{route('internProfile')}}">Profile</a>
             <a class="nav-item nav-link" href="{{route('createReport')}}">Create Report </a>
             <a class="nav-item nav-link" href="{{route('saveReport')}}">Edit Reports</a>
-            <a class="nav-item nav-link" href="{{route('submitreport')}}">View and Submit Reports</a>
-            <a class="nav-item nav-link" href="{{route('internReport')}}">Report</a>
-            <a class="nav-item nav-link" href="">View Mentors Remark</a>
+            <a class="nav-item nav-link" href="{{route('submitreport')}}">View Reports</a>
         </div>
     </div>
 </nav>
@@ -43,16 +41,17 @@
                     @endif
                 </div>
                 <br>
-                <label for="mentor_id" style="font-weight: bold;">Select your Mentor</label>
+                
+                <label for="mentor_id" style=" font-weight: bold;">Select your Mentor</label>
                 <div class="col-md-6">
                     <select name="mentor_id" id="mentor_id" class="form-control">
                         <option value="" selected disabled>Select Your Mentor Name</option>
-                        @foreach ($users as $mentor)
-                        <option value="{{ $user->id }}">{{ $mentor->name }} {{ $mentor->surname }}</option>
+                        @foreach ($data as $mentor)
+                        <option value="{{ $mentor->id }}">{{ $mentor->name }} {{ $mentor->surname }}</option>
                         @endforeach
                     </select>
-                    @if ($errors->has('user_id'))
-                    <span class="text-danger">{{ $errors->first('user_id') }}</span>
+                    @if ($errors->has('mentor_id'))
+                    <span class="text-danger">{{ $errors->first('mentor_id') }}</span>
                     @endif
                 </div>
                 <br>

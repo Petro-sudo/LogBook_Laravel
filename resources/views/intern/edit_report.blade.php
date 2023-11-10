@@ -12,27 +12,10 @@
 
 <body>
     
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav"  >
-                <a class="av-item nav-link active" href="{{route('dashboard')}}">Dashboard </a>
-                <a class="nav-item nav-link" href="{{route('internProfile')}}">Profile</a>
-                <a class="nav-item nav-link" href="{{route('createReport')}}">Create Report </a>
-                <a class="nav-item nav-link" href="{{route('saveReport')}}">Edit Reports</a>
-                <a class="nav-item nav-link" href="{{route('submitreport')}}">View and Submit Reports</a>
-                <a class="nav-item nav-link" href="{{route('internReport')}}">Report</a>
-                <a class="nav-item nav-link" href="">View Mentors Remark</a>
-            </div>
-        </div>
-    </nav>
-
     <div class="row justify-content-center mt-5">
     <div class="col-md-6">
+    <a href="{{route('saveReport')}}">BACK</a>
+            <br>
         <div class="card">
             <div class="card-header" style="text-align: center;"> Edit From {{$report->startDate}} To
                 {{$report->endDate}}</div>

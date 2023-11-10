@@ -14,9 +14,7 @@
             <a class="nav-item nav-link" href="{{route('internProfile')}}">Profile</a>
             <a class="nav-item nav-link" href="{{route('createReport')}}">Create Report </a>
             <a class="nav-item nav-link" href="{{route('saveReport')}}">Edit Reports</a>
-            <a class="nav-item nav-link" href="{{route('submitreport')}}">View and Submit Reports</a>
-            <a class="nav-item nav-link" href="{{route('internReport')}}">Report</a>
-            <a class="nav-item nav-link" href="">View Mentors Remark</a>
+            <a class="nav-item nav-link" href="{{route('submitreport')}}">View Reports</a>
         </div>
     </div>
 </nav>
