@@ -28,12 +28,12 @@
             <div class="card-body" style="text-align: center;">
                 <table class="table table-striped table-bordered table-hover dataTables-example">
                     <tr>
-                        <th>Select Intern to View Report</th>
+                        <th>Intern's to View Report</th>
                     </tr>
                     @foreach ($users as $user)
                     <tr>
                         <td>
-                            <a href="{{route('datereport',[($user->id)])}}">{{$user->name}} :
+                            <a href="{{route('reportview',[($user->id)])}}">{{$user->name}} :
                                 {{$user->surname}}</a>
                         </td>
                     </tr>

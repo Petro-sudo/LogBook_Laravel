@@ -41,6 +41,7 @@
                     <p style="font-size: large;border-bottom: 1px solid;"> {{ $users->hours }} Hours</p>
                     <p style="font-size: large;font-weight: bold;">Task Describtion</p>
                     <pre style="font-size: large;border-bottom: 1px solid;">{{ $users->taskDescrition }}</pre>
+                    <p style="font-size: large;font-weight: bold;">Next Report</p>
                 </div>
 
                 @endforeach

@@ -20,6 +20,7 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::get('/admin', 'dashboard')->name('admin');
     Route::post('/logout', 'logout')->name('logout');
+    Route::get('/viewinternreport/{user}/view', 'viewinternReport')->name('reporinterntview');
     //Route::get('/getmentor', 'getmentor')->name('getmentor');
     //Route::post('/enter on browser', 'name on the control ')->name('routing name');
 
@@ -59,7 +60,7 @@ Route::controller(MentorController::class)->group(function () {
     Route::get('/editmentorprofile/{user}/edit', 'editmentorprofile')->name('editmentorprofile');
     Route::put('/updatementorprofile/{user}/update', 'updatementorprofile')->name('updatementorprofile');
     Route::get('/viewreport', 'view')->name('viewreport');
-    Route::get('/viewreportdates/{user}/dates', 'date')->name('datereport');
+   // Route::get('/viewreportdates/{user}/dates', 'date')->name('datereport');
     Route::get('/viewreport/{user}/view', 'viewReport')->name('reportview');
   
 });
